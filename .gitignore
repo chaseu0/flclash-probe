@@ -1,0 +1,17 @@
+# Secrets & local config
+config.json
+.env
+*.token
+
+# Runtime data (installed copy lives in Application Support)
+state.json
+report.json
+report.html
+probe.log
+launchd.out.log
+launchd.err.log
+venv/
+bin/mihomo
+
+# macOS
+.DS_Store

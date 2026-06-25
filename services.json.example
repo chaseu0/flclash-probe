@@ -1,0 +1,40 @@
+{
+  "services": [
+    {
+      "name": "Google",
+      "url": "https://www.google.com/generate_204",
+      "weight": 1.0,
+      "enabled": true
+    },
+    {
+      "name": "YouTube",
+      "url": "https://www.youtube.com/generate_204",
+      "weight": 1.0,
+      "enabled": true
+    },
+    {
+      "name": "Facebook",
+      "url": "https://www.facebook.com/robots.txt",
+      "weight": 1.0,
+      "enabled": true
+    },
+    {
+      "name": "Netflix",
+      "url": "https://www.netflix.com/generate_204",
+      "weight": 1.0,
+      "enabled": true
+    },
+    {
+      "name": "ChatGPT",
+      "url": "https://chatgpt.com/",
+      "weight": 1.0,
+      "enabled": true
+    },
+    {
+      "name": "TikTok",
+      "url": "https://www.tiktok.com/robots.txt",
+      "weight": 1.0,
+      "enabled": true
+    }
+  ]
+}
