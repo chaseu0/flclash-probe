@@ -340,6 +340,10 @@ def conn_type(hosting: bool, mobile: bool) -> str:
 
 def format_service_score(score: int, avg_ms: float | None = None) -> str:
     if score <= 0:
+        if avg_ms is not None:
+            if avg_ms >= 3000:
+                return f"S0|{avg_ms / 1000:.1f}s"
+            return f"S0|{int(round(avg_ms))}ms"
         return "S0"
     if avg_ms is not None:
         if avg_ms >= 3000:
@@ -390,12 +394,12 @@ def http_probe(url: str, proxy: str, timeout: float = SERVICE_TIMEOUT) -> tuple[
 def compute_service_score(results: list[dict[str, Any]]) -> tuple[int, float | None]:
     if not results:
         return 0, None
-    if any(not r.get("ok") for r in results):
-        return 0, None
     total_w = sum(float(r.get("weight", 1.0)) for r in results)
     if total_w <= 0:
         return 0, None
     avg_ms = sum(float(r["weight"]) * float(r["ms"]) for r in results) / total_w
+    if any(not r.get("ok") for r in results):
+        return 0, avg_ms
     score = max(0, min(99, int(99 - avg_ms * 99 / (SERVICE_TIMEOUT * 1000))))
     return score, avg_ms
 
